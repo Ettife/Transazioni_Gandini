@@ -1,7 +1,7 @@
 //
 // Created by ettor on 24/03/2025.
 //
-#include "transazione.h"
+#include "Transazione.h"
 
 Transazione::Transazione(double imp, const std::string& desc, const std::string& d)
         : importo(imp), descrizione(desc), data(d) {}

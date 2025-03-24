@@ -7,4 +7,5 @@ add_executable(Transazioni_Gandini main.cpp
         Transazione.h
         Transazione.cpp
         GestoreFile.h
+        GestoreFile.cpp
 )

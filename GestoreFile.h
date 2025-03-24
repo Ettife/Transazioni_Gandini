@@ -7,7 +7,7 @@
 
 #include <vector>
 #include <string>
-#include "transazione.h"
+#include "Transazione.h"
 
 class GestoreFile {
 private:
@@ -16,8 +16,8 @@ private:
 
 public:
     static GestoreFile* get_istanza();
-    void salva_su_file(std::string nome_file, std::vector<Transazione*> transazioni);
-    std::vector<Transazione*> leggi_da_file(std::string nome_file);
+    void salva_su_file(const std::string& nome_file, const std::vector<Transazione*>& transazioni) const;
+    std::vector<Transazione*> leggi_da_file(const std::string& nome_file) const;
 };
 
 
