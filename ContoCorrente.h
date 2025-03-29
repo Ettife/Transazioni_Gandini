@@ -6,21 +6,20 @@
 #define TRANSAZIONI_GANDINI_CONTOCORRENTE_H
 
 #include "Transazione.h"
+#include <vector>
 
 class ContoCorrente {
 private:
-    static const int MAX_TRANSAZIONI = 100;
-    Transazione* transazioni[MAX_TRANSAZIONI];
-    int num_transazioni;
-    double saldo;
+    std::vector<Transazione*> lista_transazioni;
 
 public:
-    ContoCorrente();
+    ContoCorrente() = default;
     ~ContoCorrente();
 
     void aggiungi_transazione(Transazione* t);
-    double get_saldo() const;
     void mostra_transazioni() const;
+    double calcola_saldo() const;
+    const std::vector<Transazione*>& get_transazioni() const;
 };
 
 #endif //TRANSAZIONI_GANDINI_CONTOCORRENTE_H

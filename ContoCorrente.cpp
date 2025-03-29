@@ -4,35 +4,34 @@
 #include "ContoCorrente.h"
 #include <iostream>
 
-ContoCorrente::ContoCorrente() : num_transazioni(0), saldo(0) {
-    for (int i = 0; i < MAX_TRANSAZIONI; ++i) {
-        transazioni[i] = nullptr;
-    }
-}
-
 ContoCorrente::~ContoCorrente() {
-    for (int i = 0; i < num_transazioni; ++i) {
-        delete transazioni[i];
+    for (auto t : lista_transazioni) {
+        delete t;
     }
 }
 
 void ContoCorrente::aggiungi_transazione(Transazione* t) {
-    if (num_transazioni < MAX_TRANSAZIONI) {
-        transazioni[num_transazioni++] = t;
-        saldo += t->get_importo();  // Aggiorna il saldo direttamente
-    } else {
-        std::cerr << "Errore: Numero massimo di transazioni raggiunto." << std::endl;
-    }
-}
-
-double ContoCorrente::get_saldo() const {
-    return saldo;
+    lista_transazioni.push_back(t);
 }
 
 void ContoCorrente::mostra_transazioni() const {
-    for (int i = 0; i < num_transazioni; ++i) {
-        if (transazioni[i] != nullptr) {
-            std::cout << transazioni[i]->to_string() << std::endl;
+    for (const auto& t : lista_transazioni) {
+        std::cout << t->to_string() << std::endl;
+    }
+}
+
+double ContoCorrente::calcola_saldo() const {
+    double saldo = 0;
+    for (const auto& t : lista_transazioni) {
+        if (dynamic_cast<const Entrata*>(t)) {
+            saldo += t->get_importo();
+        } else {
+            saldo -= t->get_importo();
         }
     }
+    return saldo;
+}
+
+const std::vector<Transazione*>& ContoCorrente::get_transazioni() const {
+    return lista_transazioni;
 }
