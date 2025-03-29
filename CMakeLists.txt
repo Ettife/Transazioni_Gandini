@@ -9,4 +9,5 @@ add_executable(Transazioni_Gandini main.cpp
         GestoreFile.h
         GestoreFile.cpp
         ContoCorrente.h
+        ContoCorrente.cpp
 )
