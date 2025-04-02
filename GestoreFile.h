@@ -12,14 +12,12 @@
 class GestoreFile {
 private:
     static GestoreFile* istanza;
-    GestoreFile();
+    GestoreFile() = default;
 
 public:
     static GestoreFile* get_istanza();
     void salva_su_file(const std::string& nome_file, const std::vector<Transazione*>& transazioni) const;
     std::vector<Transazione*> leggi_da_file(const std::string& nome_file) const;
 };
-
-
 
 #endif //TRANSAZIONI_GANDINI_GESTOREFILE_H
