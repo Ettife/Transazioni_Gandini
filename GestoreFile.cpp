@@ -25,12 +25,12 @@ void GestoreFile::salva_su_file(const std::string& nome_file, const std::vector<
 
 std::vector<Transazione*> GestoreFile::leggi_da_file(const std::string& nome_file) const {
     std::vector<Transazione*> transazioni;
-    std::ifstream file(nome_file);
+    std::ifstream file(nome_file); //se il file non esiste l'operazione fallisce
     std::string riga;
     while (std::getline(file, riga)) { //getline(file, riga) legge una riga intera dal file e la memorizza in "riga"
-        std::stringstream ss(riga);
+        std::stringstream ss(riga);      //permette di trattare una stringa come uno stream
         std::string tipo, importo_str, descrizione, data;
-        std::getline(ss, tipo, ';');	//legge dallo stringstream "ss" fino all'occorrenza del primo ';'
+        std::getline(ss, tipo, ';');	//legge dallo stringstream "ss" fino all'occorrenza del primo ';' e mette il risultato della lettura nel secondo argomento
         std::getline(ss, importo_str, ';');
         std::getline(ss, descrizione, ';');
         std::getline(ss, data, ';');

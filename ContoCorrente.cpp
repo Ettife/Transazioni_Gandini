@@ -23,7 +23,7 @@ void ContoCorrente::mostra_transazioni() const {
 double ContoCorrente::calcola_saldo() const {
     double saldo = 0;
     for (const auto& t : lista_transazioni) {
-        if (dynamic_cast<const Entrata*>(t)) {
+        if (dynamic_cast<const Entrata*>(t)) { //verifica la validità della conversione a runtime
             saldo += t->get_importo();
         } else {
             saldo -= t->get_importo();
