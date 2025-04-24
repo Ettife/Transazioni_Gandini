@@ -7,9 +7,6 @@ add_subdirectory(test)
 
 set(SOURCE_FILES
         Transazione.h
-        Transazione.cpp
-        GestoreFile.h
-        GestoreFile.cpp
         ContoCorrente.h
         ContoCorrente.cpp)
 

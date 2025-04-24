@@ -1,38 +1,33 @@
-//
-// Created by ettor on 23/03/2025.
-//
 #ifndef TRANSAZIONI_GANDINI_TRANSAZIONE_H
 #define TRANSAZIONI_GANDINI_TRANSAZIONE_H
 
 #include <string>
-#include <iostream>
+#include <stdexcept>
+
+enum class TipoTransazione { Entrata, Uscita };
 
 class Transazione {
-protected:
+private:
     double importo;
     std::string descrizione;
-    std::string data; // formato: YYYY-MM-DD
+    std::string data;
+    TipoTransazione tipo;
 
 public:
-    Transazione(double imp, const std::string& desc, const std::string& d);
-    virtual ~Transazione() = default;
+    Transazione(double imp, const std::string& desc, const std::string& d, TipoTransazione t)
+            : importo(imp), descrizione(desc), data(d), tipo(t) {
+        if (imp < 0) throw std::invalid_argument("Importo negativo non ammesso");
+    }
 
-    virtual std::string to_string() const = 0;
-    double get_importo() const;
-    std::string get_data() const;
-    std::string get_descrizione() const;
-};
+    double get_importo() const { return importo; }
+    std::string get_data() const { return data; }
+    std::string get_descrizione() const { return descrizione; }
+    TipoTransazione get_tipo() const { return tipo; }
 
-class Entrata : public Transazione {
-public:
-    Entrata(double imp, const std::string& desc, const std::string& d);
-    std::string to_string() const override;
-};
-
-class Uscita : public Transazione {
-public:
-    Uscita(double imp, const std::string& desc, const std::string& d);
-    std::string to_string() const override;
+    std::string to_string() const {
+        return (tipo == TipoTransazione::Entrata ? "Entrata" : "Uscita") +
+               (";" + std::to_string(importo) + ";" + descrizione + ";" + data);
+    }
 };
 
 #endif //TRANSAZIONI_GANDINI_TRANSAZIONE_H
