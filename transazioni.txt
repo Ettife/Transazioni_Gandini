@@ -1,0 +1,3 @@
+Entrata;1500.000000;Stipendio;2025-04-01
+Uscita;200.000000;Spesa supermercato;2025-04-05
+Uscita;60.000000;Cena fuori;2025-04-07
