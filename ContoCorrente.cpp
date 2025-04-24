@@ -42,6 +42,10 @@ double ContoCorrente::calcola_saldo() const {
     return saldo;
 }
 
+std::list<Transazione> ContoCorrente::get_transazioni() const {
+    return lista_transazioni;
+}
+
 std::list<Transazione> ContoCorrente::cerca_per_data(const std::string& data) const {
     std::list<Transazione> risultati;
     for (const auto& t : lista_transazioni) {

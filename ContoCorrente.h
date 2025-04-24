@@ -17,6 +17,7 @@ public:
     void modifica_transazione(const std::string& vecchia_descrizione, const Transazione& nuova);
     void mostra_transazioni() const;
     double calcola_saldo() const;
+    std::list<Transazione> get_transazioni() const;
     std::list<Transazione> cerca_per_data(const std::string& data) const;
     std::list<Transazione> cerca_per_descrizione(const std::string& keyword) const;
 
