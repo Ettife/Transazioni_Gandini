@@ -84,6 +84,7 @@ TEST_F(ContoCorrenteTest, SalvataggioELetturaFile) {
     conto_lettura.leggi_da_file(filename);
 
     EXPECT_EQ(conto_lettura.get_transazioni().size(), 3);
+    EXPECT_EQ(conto_lettura.calcola_saldo(), 550);
 
     std::remove(filename.c_str());
 }

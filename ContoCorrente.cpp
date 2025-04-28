@@ -141,7 +141,7 @@ void ContoCorrente::leggi_da_file(const std::string& nome_file) {
         }
 
         try {
-            double imp = std::stod(imp_str);
+            double imp = std::stod(imp_str); //string to double
             TipoTransazione tipo = (tipo_str == "Entrata") ? TipoTransazione::Entrata : TipoTransazione::Uscita;
             Transazione t(imp, desc, data, tipo);
             lista_transazioni.push_back(t);

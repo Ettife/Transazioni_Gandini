@@ -20,7 +20,7 @@ private:
         const std::regex formato_data("^\\d{4}-\\d{2}-\\d{2}$");
         if (!std::regex_match(data, formato_data)) return false;
         int anno, mese, giorno;
-        sscanf(data.c_str(), "%d-%d-%d", &anno, &mese, &giorno);
+        sscanf(data.c_str(), "%d-%d-%d", &anno, &mese, &giorno); //Estrae i numeri anno, mese e giorno dalla stringa data e li pone nelle relative variabili
         if (mese < 1 || mese > 12 || giorno < 1 || giorno > 31) return false;
         if ((mese == 4 || mese == 6 || mese == 9 || mese == 11) && giorno > 30) return false;
         if (mese == 2) {
